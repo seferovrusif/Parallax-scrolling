@@ -1,11 +1,25 @@
-body {
+* {
   margin: 0;
+  padding: 0;
+  box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
-  background: black;
-  overflow-x: hidden;
-  min-height: 200vh;
 }
 
+/* BODY – SKY GRADIENT */
+body {
+  min-height: 200vh;
+  overflow-x: hidden;
+
+  background: linear-gradient(
+    to bottom,
+    #0b1d3a 0%,     /* night sky */
+    #1e3c72 35%,   /* deep blue */
+    #4f8fc0 65%,   /* sky blue */
+    #9fd3f5 100%   /* light sky */
+  );
+}
+
+/* PARALLAX SECTION */
 .parallax {
   position: relative;
   width: 100%;
@@ -13,17 +27,18 @@ body {
   overflow: hidden;
 }
 
-/* STARS */
+/* STARS LAYER */
 .stars {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(2px 2px at 20% 30%, white, transparent),
-    radial-gradient(2px 2px at 70% 60%, white, transparent),
-    radial-gradient(2px 2px at 40% 80%, white, transparent),
-    radial-gradient(2px 2px at 10% 50%, white, transparent);
-  background-size: 200px 200px;
+    radial-gradient(2px 2px at 15% 25%, rgba(255,255,255,0.9), transparent),
+    radial-gradient(2px 2px at 35% 60%, rgba(255,255,255,0.8), transparent),
+    radial-gradient(2px 2px at 70% 30%, rgba(255,255,255,0.7), transparent),
+    radial-gradient(2px 2px at 85% 55%, rgba(255,255,255,0.9), transparent);
+  background-size: 220px 220px;
   z-index: 1;
+  pointer-events: none;
 }
 
 /* MOON */
@@ -32,7 +47,9 @@ body {
   top: 10%;
   left: 60%;
   width: 200px;
+  max-width: 25%;
   z-index: 2;
+  pointer-events: none;
 }
 
 /* MOUNTAINS */
@@ -41,9 +58,12 @@ body {
   bottom: 0;
   left: 0;
   width: 100%;
-  height: 60vh;
+  height: 65vh;
   object-fit: cover;
   z-index: 3;
+
+  /* smooth blend with sky */
+  mask-image: linear-gradient(to top, black 85%, transparent);
 }
 
 /* TITLE */
@@ -53,14 +73,24 @@ body {
   width: 100%;
   text-align: center;
   font-size: 4rem;
-  color: #fff;
+  color: #ffffff;
   z-index: 4;
-  text-shadow: 0 0 25px rgba(255, 255, 255, 0.6);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.6);
 }
 
-/* CONTENT */
+/* CONTENT SECTION */
 .content {
   background: #111;
   color: #fff;
   padding: 100px;
+}
+
+.content h2 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.content p {
+  font-size: 1.2rem;
+  line-height: 1.6;
 }
